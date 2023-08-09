@@ -21,12 +21,16 @@ class UploadController extends Controller
         $fileName = $request->file_name.'.'.$request->file->extension();  
 
         $imgExt = ['jpg','jpeg','JPG','JPEG','GIF','gif','png','PNG','HEIC'];
-        if (in_array($fileExt, $imgExt)) {
+        if (in_array($fileExt, $imgExt) && $request->max_size) {
+            $validator = Validator::make($request->all(), [
+                'max_size' => 'required|integer',
+            ]);
+            if($validator->fails()) return response()->json($validator->errors()->first(), 400);
             $imageTmpName   = $_FILES["file"]["tmp_name"];
             $imageSize = getImageSize($imageTmpName);
             $imageWidth = $imageSize[0];
             $imageHeight = $imageSize[1];
-            $maxWidth = $req->max_size ?? 700;
+            $maxWidth = $request->max_size ?? 700;
             
             $tempName = public_path($path).$fileName.'.'.$fileExt;
             if ($imageWidth > $maxWidth) $DESIRED_WIDTH = $maxWidth;
@@ -51,7 +55,7 @@ class UploadController extends Controller
             } else {
                 imageJPEG($resizedImage, $tempName);
             }
-            
+            return response()->json(['path' => $tempName]);
             imageDestroy($originalImage);
             imageDestroy($resizedImage);
         } else {
