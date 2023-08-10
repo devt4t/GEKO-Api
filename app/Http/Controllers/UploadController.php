@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Image;
 
 class UploadController extends Controller
 {
@@ -26,38 +27,13 @@ class UploadController extends Controller
                 'max_size' => 'required|integer',
             ]);
             if($validator->fails()) return response()->json($validator->errors()->first(), 400);
-            $imageTmpName   = $_FILES["file"]["tmp_name"];
-            $imageSize = getImageSize($imageTmpName);
-            $imageWidth = $imageSize[0];
-            $imageHeight = $imageSize[1];
-            $maxWidth = $request->max_size ?? 700;
-            
-            $tempName = public_path($path).$fileName.'.'.$fileExt;
-            if ($imageWidth > $maxWidth) $DESIRED_WIDTH = $maxWidth;
-            else $DESIRED_WIDTH = $imageWidth;
-            
-            
-            $proportionalHeight = round(($DESIRED_WIDTH * $imageHeight) / $imageWidth);
-            
-            $originalImage = imageCreateFromString( file_get_contents($imageTmpName) );
-
-            $resizedImage = imageCreateTrueColor($DESIRED_WIDTH, $proportionalHeight);
-            
-            imagesavealpha($resizedImage,true);
-            $trans_colour   = imagecolorallocatealpha($resizedImage,0,0,0,127);
-            imagefill($resizedImage,0,0,$trans_colour);
-            unset($trans_colour);
-            
-            imageCopyResampled($resizedImage, $originalImage, 0, 0, 0, 0, $DESIRED_WIDTH+1, $proportionalHeight+1, $imageWidth, $imageHeight);
-            
-            if ($fileExt == 'png') {
-                imagePNG($resizedImage, $tempName);
-            } else {
-                imageJPEG($resizedImage, $tempName);
-            }
-            return response()->json(['path' => $tempName]);
-            imageDestroy($originalImage);
-            imageDestroy($resizedImage);
+            $image = $request->file('file');
+        
+            $destinationPath = public_path($path);
+            $img = Image::make($image->getRealPath());
+            $img->resize($request->max_size, $request->max_size, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
         } else {
             $request->file->move(public_path($path), $fileName);
         }
