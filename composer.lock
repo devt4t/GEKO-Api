@@ -1113,8 +1113,6 @@
                 }
             ],
             "time": "2023-04-17T16:00:37+00:00"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "intervention/image",
@@ -1199,7 +1197,6 @@
                 }
             ],
             "time": "2022-05-21T17:30:32+00:00"
->>>>>>> b5873e05dd0a8dadbc5230453a320d6adaba6059
         },
         {
             "name": "laravel/framework",
@@ -1494,18 +1491,6 @@
         },
         {
             "name": "lcobucci/jwt",
-<<<<<<< HEAD
-            "version": "4.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "4d7de2fe0d51a96418c0d04004986e410e87f6b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/4d7de2fe0d51a96418c0d04004986e410e87f6b4",
-                "reference": "4d7de2fe0d51a96418c0d04004986e410e87f6b4",
-=======
             "version": "4.0.4",
             "source": {
                 "type": "git",
@@ -1516,7 +1501,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/lcobucci/jwt/zipball/55564265fddf810504110bd68ca311932324b0e9",
                 "reference": "55564265fddf810504110bd68ca311932324b0e9",
->>>>>>> b5873e05dd0a8dadbc5230453a320d6adaba6059
                 "shasum": ""
             },
             "require": {
@@ -1524,26 +1508,6 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-<<<<<<< HEAD
-                "ext-sodium": "*",
-                "lcobucci/clock": "^2.0 || ^3.0",
-                "php": "^7.4 || ^8.0"
-            },
-            "require-dev": {
-                "infection/infection": "^0.21",
-                "lcobucci/coding-standard": "^6.0",
-                "mikey179/vfsstream": "^1.6.7",
-                "phpbench/phpbench": "^1.2",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.4",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/php-invoker": "^3.1",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-=======
                 "lcobucci/clock": "^2.0",
                 "php": "^7.4 || ^8.0"
             },
@@ -1566,7 +1530,6 @@
                     "dev-master": "4.0-dev"
                 }
             },
->>>>>>> b5873e05dd0a8dadbc5230453a320d6adaba6059
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
@@ -1590,11 +1553,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/lcobucci/jwt/tree/4.3.0"
-=======
                 "source": "https://github.com/lcobucci/jwt/tree/4.0.4"
->>>>>>> b5873e05dd0a8dadbc5230453a320d6adaba6059
             },
             "funding": [
                 {
@@ -1606,11 +1565,7 @@
                     "type": "patreon"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2023-01-02T13:28:00+00:00"
-=======
             "time": "2021-09-28T19:18:28+00:00"
->>>>>>> b5873e05dd0a8dadbc5230453a320d6adaba6059
         },
         {
             "name": "league/commonmark",
